@@ -45,11 +45,11 @@ const { title = META_TITLE, description = META_DESCRIPTION } = Astro.props;
 
 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script is:inline src="dist/js/ie10-viewport-bug-workaround.js"></script>
+	<script is:inline src="/dist/js/ie10-viewport-bug-workaround.js"></script>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="dist/js/html5shiv.min.js"></script>
-	<script src="dist/js/respond.min.js"></script>
+	<script src="/dist/js/html5shiv.min.js"></script>
+	<script src="/dist/js/respond.min.js"></script>
 	<![endif]-->
 
 <!-- Optimizely Tag -->
@@ -85,8 +85,9 @@ const { title = META_TITLE, description = META_DESCRIPTION } = Astro.props;
 
 	<!-- BASIC -->
 	<script is:inline type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script is:inline type="text/javascript" src="/dist/js/scripts.min.js"></script>
 	<script is:inline type="text/javascript" src="/dist/js/bootstrap.min.js"></script>
+	<script is:inline type="text/javascript" src="/dist/js/jquery.easing.1.3.js"></script>
+	<script is:inline type="text/javascript" src="/dist/js/scripts.min.js"></script>
 
 	<!-- Cookie Banner -->
 	<script is:inline>var cookieLanguage = "en";</script>
