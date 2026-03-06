@@ -1,0 +1,345 @@
+---
+// src/pages/gender-pay-gap.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LocationModal from '../components/ui/LocationModal.astro';
+import ContactModal from '../components/ui/ContactModal.astro';
+import { SITE } from '../config/site.ts';
+---
+<BaseLayout
+  title={`Gender Pay Gap Report | ${SITE.name}`}
+  description="Kaplan International Gender Pay Gap Report — our commitment to pay transparency and equality."
+  canonical={SITE.url + '/gender-pay-gap'}
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <div class="gpg-page">
+    <!-- Page hero -->
+    <div class="gpg-hero section--navy">
+      <div class="container">
+        <nav class="gpg-breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li><a href="/" class="breadcrumb-link">Home</a></li>
+            <li aria-current="page">Gender Pay Gap Report</li>
+          </ol>
+        </nav>
+        <h1 class="gpg-hero__title">Gender Pay Gap Report</h1>
+        <p class="gpg-hero__sub">
+          Kaplan International — Aspect International Language Academies Ltd
+        </p>
+      </div>
+    </div>
+
+    <!-- Report content -->
+    <div class="section gpg-content">
+      <div class="container container--narrow">
+        <div class="gpg-prose">
+          <h2>Our commitment to gender pay equality</h2>
+          <p>
+            Kaplan International is committed to creating an inclusive working environment where all
+            employees are valued and rewarded fairly. We believe in transparency around pay and are
+            committed to reducing the gender pay gap across our organisation.
+          </p>
+
+          <h2>What is the gender pay gap?</h2>
+          <p>
+            The gender pay gap is a measure of the difference between the average earnings of men
+            and women across an organisation. It is different from equal pay — which is about
+            ensuring that men and women receive the same pay for the same work. The gender pay gap
+            reflects broader structural factors including the distribution of men and women across
+            different roles and levels of seniority within the organisation.
+          </p>
+
+          <h2>About our workforce</h2>
+          <p>
+            As an international education business, Kaplan International employs a diverse workforce
+            across a wide range of roles — from teachers and academic managers to operations,
+            technology, sales, marketing, finance and human resources professionals. Our workforce
+            spans multiple countries and cultures, reflecting the international student communities
+            we serve.
+          </p>
+
+          <h2>Reporting entity</h2>
+          <dl class="gpg-details">
+            <div class="gpg-detail">
+              <dt>Legal entity</dt>
+              <dd>{SITE.legalEntity}</dd>
+            </div>
+            <div class="gpg-detail">
+              <dt>Registration number</dt>
+              <dd>{SITE.legalRegNo}</dd>
+            </div>
+            <div class="gpg-detail">
+              <dt>VAT number</dt>
+              <dd>{SITE.legalVatNo}</dd>
+            </div>
+            <div class="gpg-detail">
+              <dt>Registered office</dt>
+              <dd>{SITE.legalAddress}</dd>
+            </div>
+          </dl>
+
+          <h2>Our actions</h2>
+          <p>
+            We are committed to a range of actions to help close the gender pay gap over time:
+          </p>
+          <ul class="gpg-list">
+            <li>
+              <strong>Structured pay bands</strong> — ensuring that pay decisions are based on
+              transparent criteria linked to role, experience and performance.
+            </li>
+            <li>
+              <strong>Flexible working</strong> — offering flexible and hybrid working arrangements
+              to support employees at all stages of their careers.
+            </li>
+            <li>
+              <strong>Parental leave</strong> — providing enhanced maternity, paternity and shared
+              parental leave to support families.
+            </li>
+            <li>
+              <strong>Recruitment practices</strong> — reviewing job descriptions and recruitment
+              processes to remove unconscious bias and attract diverse talent.
+            </li>
+            <li>
+              <strong>Leadership development</strong> — investing in programmes that support all
+              employees, including women, to progress into senior roles.
+            </li>
+          </ul>
+
+          <h2>Confirmation of accuracy</h2>
+          <p>
+            The information and data reported is accurate and has been prepared in accordance with
+            the Equality Act 2010 (Gender Pay Gap Information) Regulations 2017.
+          </p>
+
+          <div class="gpg-note">
+            <p>
+              <strong>Note:</strong> For the full statutory gender pay gap data figures, please refer
+              to our submission on the Government's gender pay gap reporting service at
+              <a
+                href="https://gender-pay-gap.service.gov.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                gender-pay-gap.service.gov.uk
+              </a>.
+            </p>
+          </div>
+
+          <div class="gpg-cta-block">
+            <p>Interested in joining our team?</p>
+            <a href="/" class="btn btn-lg btn-skyblue">Explore careers at Kaplan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals (needed for header CTA) -->
+  <LocationModal />
+  <ContactModal />
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<!-- Modal manager (same script needed on this page too) -->
+<script>
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest<HTMLElement>('[data-modal]');
+    if (trigger) {
+      const id = trigger.dataset.modal!;
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.hidden = false;
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+      document.body.style.overflow = 'hidden';
+    }
+    const closeBtn = (e.target as HTMLElement).closest<HTMLElement>('[data-modal-close]');
+    if (closeBtn) {
+      const id = closeBtn.dataset.modalClose!;
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.addEventListener('transitionend', () => { modal.hidden = true; }, { once: true });
+      document.body.style.overflow = '';
+    }
+    const backdrop = (e.target as HTMLElement).closest<HTMLElement>('.modal-backdrop');
+    if (backdrop && e.target === backdrop) {
+      backdrop.classList.remove('is-open');
+      backdrop.addEventListener('transitionend', () => { backdrop.hidden = true; }, { once: true });
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll<HTMLElement>('.modal-backdrop.is-open').forEach(modal => {
+        modal.classList.remove('is-open');
+        modal.addEventListener('transitionend', () => { modal.hidden = true; }, { once: true });
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
+
+<style>
+  .gpg-page {
+    min-height: 60vh;
+  }
+
+  /* Hero */
+  .gpg-hero {
+    background: var(--color-navy);
+    padding-block: var(--space-16) var(--space-12);
+  }
+  .gpg-breadcrumb {
+    margin-bottom: var(--space-6);
+  }
+  .breadcrumb-list {
+    list-style: none;
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  .breadcrumb-list li {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.6);
+  }
+  .breadcrumb-list li + li::before {
+    content: '›';
+    margin-right: var(--space-3);
+  }
+  .breadcrumb-link {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .breadcrumb-link:hover { text-decoration: underline; }
+
+  .gpg-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--color-white);
+    margin-bottom: var(--space-3);
+  }
+  .gpg-hero__sub {
+    color: rgba(255,255,255,0.7);
+    font-size: var(--text-lg);
+    font-weight: 300;
+  }
+
+  /* Prose */
+  .gpg-content {
+    background: var(--color-white);
+  }
+  .gpg-prose h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-border-light);
+  }
+  .gpg-prose h2:first-child { margin-top: 0; }
+  .gpg-prose p {
+    font-size: var(--text-base);
+    font-weight: 300;
+    line-height: var(--leading-relaxed);
+    color: var(--color-dark-grey);
+    margin-bottom: var(--space-4);
+  }
+  .gpg-prose a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .gpg-details {
+    background: var(--color-light-grey);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+  .gpg-detail {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: var(--space-4);
+    align-items: baseline;
+  }
+  .gpg-detail dt {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-muted-grey);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+  .gpg-detail dd {
+    font-size: var(--text-md);
+    color: var(--color-body-text);
+    margin: 0;
+  }
+  @media (max-width: 567px) {
+    .gpg-detail { grid-template-columns: 1fr; gap: var(--space-1); }
+  }
+
+  .gpg-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .gpg-list li {
+    padding-left: var(--space-6);
+    position: relative;
+    font-size: var(--text-md);
+    font-weight: 300;
+    color: var(--color-dark-grey);
+    line-height: var(--leading-relaxed);
+  }
+  .gpg-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+  .gpg-list strong {
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .gpg-note {
+    background: rgba(0,165,217,0.07);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--space-4) var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+  .gpg-note p {
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+
+  .gpg-cta-block {
+    text-align: center;
+    padding: var(--space-10) 0 var(--space-4);
+    border-top: 1px solid var(--color-border-light);
+    margin-top: var(--space-10);
+  }
+  .gpg-cta-block p {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: var(--space-4);
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+// src/components/sections/Overview.astro
+---
+<section id="overview" class="section overview" aria-labelledby="overview-title">
+  <div class="container container--narrow">
+    <div class="overview-inner text-center reveal">
+      <!-- K logo icon -->
+      <div class="k-icon" aria-hidden="true">
+        <img
+          src="/images/k-logo.svg"
+          alt=""
+          width="60"
+          height="60"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <p class="overview-strapline">Start a new and exciting career at Kaplan</p>
+
+      <h2 class="overview-heading" id="overview-title">
+        We're looking for people<br />to make a difference
+      </h2>
+
+      <p class="overview-body">
+        International education is a vibrant sector which can offer interesting career paths
+        to people who want a job that matters. Whether your talent is inspiring students,
+        helping customers, building teams who can achieve great things together or finding
+        new ways of solving old problems, we'd love to hear from you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .overview {
+    background: var(--color-white);
+  }
+
+  .overview-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .k-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  .overview-strapline {
+    font-size: var(--text-lg);
+    font-weight: 300;
+    color: var(--color-primary);
+    letter-spacing: var(--tracking-wide);
+    text-transform: lowercase;
+    margin: 0;
+  }
+
+  .overview-heading {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 900;
+    color: var(--color-navy);
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .overview-body {
+    font-size: var(--text-xl);
+    font-weight: 300;
+    color: var(--color-dark-grey);
+    line-height: var(--leading-relaxed);
+    max-width: 68ch;
+    margin: 0;
+  }
+</style>

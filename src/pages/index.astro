@@ -1,0 +1,238 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import Overview from '../components/sections/Overview.astro';
+import BusinessAreas from '../components/sections/BusinessAreas.astro';
+import CareerAreas from '../components/sections/CareerAreas.astro';
+import OurPeople from '../components/sections/OurPeople.astro';
+import Locations from '../components/sections/Locations.astro';
+import LocationModal from '../components/ui/LocationModal.astro';
+import ContactModal from '../components/ui/ContactModal.astro';
+import { SITE } from '../config/site.ts';
+
+// JobPosting structured data extracted from scraped job files
+const jobPostings = [
+  {
+    "@type": "JobPosting",
+    "title": "Academic Manager (Engineering & Computer Science)",
+    "description": "Academic Manager at Kaplan International College London. Full Time, 37.5 hours per week. Permanent contract. Salary: £38,500–£40,000 per annum + benefits. You will use your knowledge of teaching and learning to help us deliver a high-quality academic experience to our diverse, international student body, whilst managing and motivating a team of committed teachers.",
+    "datePosted": "2026-01-01",
+    "employmentType": "FULL_TIME",
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      }
+    },
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Kaplan International",
+      "sameAs": "https://www.kaplaninternational.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "GBP",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 38500,
+        "maxValue": 40000,
+        "unitText": "YEAR"
+      }
+    },
+    "url": "https://kaplan-international.hirehive.com/academic-manager-engineering-computer-science-london-kQ2ZyC"
+  },
+  {
+    "@type": "JobPosting",
+    "title": "Customer Service Advisor",
+    "description": "Customer Service Advisor at Kaplan Living, Glasgow. Part Time, 24 hours per week. Join our team delivering exceptional customer service to our international student community.",
+    "datePosted": "2026-01-01",
+    "employmentType": "PART_TIME",
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Glasgow",
+        "addressCountry": "GB"
+      }
+    },
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Kaplan International",
+      "sameAs": "https://www.kaplaninternational.com"
+    },
+    "url": "https://kaplan-international.hirehive.com/customer-service-advisor-glasgow-3281Kk"
+  },
+  {
+    "@type": "JobPosting",
+    "title": "Digital Learning Product Manager",
+    "description": "Digital Learning Product Manager based in London. Full Time. Help us shape the future of digital learning at Kaplan International, managing innovative products that support students worldwide.",
+    "datePosted": "2026-01-01",
+    "employmentType": "FULL_TIME",
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      }
+    },
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Kaplan International",
+      "sameAs": "https://www.kaplaninternational.com"
+    },
+    "url": "https://kaplan-international.hirehive.com/digital-learning-product-manager-london-RdFTht"
+  }
+];
+
+const jobPostingsLd = {
+  "@context": "https://schema.org",
+  "@graph": jobPostings
+};
+---
+<BaseLayout
+  title={SITE.title}
+  description={SITE.description}
+  canonical={SITE.url + '/'}
+>
+  <Fragment slot="head">
+    <!-- JobPosting JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jobPostingsLd)} />
+  </Fragment>
+
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <Hero />
+  <Overview />
+  <BusinessAreas />
+  <CareerAreas />
+  <OurPeople />
+  <Locations />
+
+  <!-- Modals -->
+  <LocationModal />
+  <ContactModal />
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
+
+<!-- ── Shared Modal Manager ─────────────────────────────────────── -->
+<script>
+  (() => {
+    // Open modal
+    function openModal(id: string) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.hidden = false;
+      // Give browser a frame to render before animating
+      requestAnimationFrame(() => {
+        modal.classList.add('is-open');
+      });
+      // Focus first focusable element
+      const first = modal.querySelector<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      first?.focus();
+      document.body.style.overflow = 'hidden';
+      modal.addEventListener('keydown', trapFocus);
+    }
+
+    function closeModal(id: string) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.addEventListener('transitionend', () => {
+        modal.hidden = true;
+      }, { once: true });
+      document.body.style.overflow = '';
+      modal.removeEventListener('keydown', trapFocus);
+    }
+
+    function trapFocus(e: KeyboardEvent) {
+      const modal = (e.currentTarget as HTMLElement);
+      if (e.key === 'Escape') {
+        const id = modal.id;
+        closeModal(id);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(
+        modal.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    // Wire up all [data-modal] triggers
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as HTMLElement).closest<HTMLElement>('[data-modal]');
+      if (trigger) {
+        const modalId = trigger.dataset.modal!;
+        openModal(modalId);
+        return;
+      }
+      // Close button
+      const closeBtn = (e.target as HTMLElement).closest<HTMLElement>('[data-modal-close]');
+      if (closeBtn) {
+        closeModal(closeBtn.dataset.modalClose!);
+        return;
+      }
+      // Click outside dialog
+      const backdrop = (e.target as HTMLElement).closest<HTMLElement>('.modal-backdrop');
+      if (backdrop && e.target === backdrop) {
+        closeModal(backdrop.id);
+      }
+    });
+  })();
+</script>
+
+<!-- ── Scroll Reveal (IntersectionObserver) ─────────────────────── -->
+<script>
+  (() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      // Make all elements visible immediately
+      document.querySelectorAll('.reveal').forEach(el => {
+        (el as HTMLElement).style.opacity = '1';
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+</script>

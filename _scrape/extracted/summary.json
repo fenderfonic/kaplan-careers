@@ -1,0 +1,398 @@
+{
+  "scraped_at": "2026-03-06T22:37:00Z",
+  "target_url": "https://careers.kaplaninternational.com/",
+
+  "server_headers": {
+    "server": "cloudflare",
+    "http_version": "HTTP/2",
+    "content_type": "text/html; charset=utf-8",
+    "cache_control": "public, max-age=0, must-revalidate",
+    "access_control_allow_origin": "*",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "x_content_type_options": "nosniff",
+    "cdn": "Cloudflare",
+    "cf_ray": "LHR (London) edge node",
+    "cookies": ["__cf_bm (Cloudflare Bot Management)"],
+    "reporting": "NEL (Network Error Logging) via Cloudflare"
+  },
+
+  "site_architecture": {
+    "type": "Single Page Application (SPA) / Static HTML microsite",
+    "framework": "Custom Bootstrap 3 + jQuery 1.11.1",
+    "cms": "None — static HTML file served from Cloudflare CDN",
+    "hosting": "Cloudflare CDN (origin unknown, likely static S3/GCS bucket or similar)",
+    "page_count": 1,
+    "note": "No sitemap.xml — /sitemap.xml and /robots.txt both return the same homepage HTML. No sub-pages exist on this domain. All job applications link out to external ATS platforms.",
+    "video_background": "jQuery Vide plugin — dist/video/ki-career (mp4/webm/ogv)",
+    "scroll_animations": "ScrollReveal.js (sr-* classes throughout)"
+  },
+
+  "ats_systems": {
+    "emea_uk_ireland": {
+      "platform": "HireHive",
+      "url": "https://my.hirehive.io/kaplan-international/",
+      "resolved_url": "https://kaplan-international.hirehive.com",
+      "company_id": "7012",
+      "note": "301 redirect from my.hirehive.io to kaplan-international.hirehive.com",
+      "server": "Cloudflare + ASP.NET 4.0 (Azure App Service)",
+      "analytics_on_hirehive": "Microsoft Application Insights (InstrumentationKey=72942265-ac27-47ac-8a4b-d106f86fc461, North Europe endpoint)",
+      "job_count_live": 14,
+      "jobs_listed": [
+        "Customer Service Advisor — Glasgow",
+        "Housekeeper — Glasgow",
+        "Associate Director (UKP) — Delhi",
+        "Night Facilities Officer — Brighton",
+        "Student Support Adviser — Remote",
+        "Digital Learning Product Manager — London",
+        "Client Services Executive (MENA) — Cairo",
+        "Academic Manager (Engineering & Computer Science) — London",
+        "Development Manager — London",
+        "Hourly Paid English Teacher — Bournemouth",
+        "Lead Analyst — Remote",
+        "Housekeeper — Brighton",
+        "Sessional Tutor (Mathematics & Statistics) — London",
+        "Hourly Paid English Teacher — Multiple UK/Ireland Locations"
+      ]
+    },
+    "usa_canada": {
+      "platform": "Workday",
+      "url": "https://ghc.wd1.myworkdayjobs.com/Kaplan_International_Careers",
+      "tenant": "ghc",
+      "career_site_name": "Kaplan_International_Careers",
+      "note": "8KB response — likely requires JS to render full job listings"
+    },
+    "australia_new_zealand": {
+      "platform": "ApplyNow (PageUp)",
+      "url": "https://kaplan.applynow.net.au/",
+      "server": "CloudFront (AWS)",
+      "analytics": "Google Analytics G-830SMPP9XE, Pendo (cdn.pendo.io)",
+      "note": "Ruby on Rails app behind CloudFront CDN"
+    },
+    "singapore": {
+      "platform": "Custom Kaplan Singapore careers page",
+      "url": "https://www.kaplan.com.sg/careers/"
+    },
+    "hong_kong": {
+      "platform": "Custom Kaplan HK page",
+      "url": "https://www.kaplan.com.hk/careers-at-kaplan_join-our-team.php"
+    }
+  },
+
+  "pages": {
+    "homepage": {
+      "url": "https://careers.kaplaninternational.com/",
+      "title": "Join our Global Team | Kaplan International",
+      "type": "Single-page scrolling microsite",
+      "sections": [
+        "#hero — full-screen video background with H1 + CTA",
+        "#overview — intro copy section",
+        "#business-area — 3 business area cards",
+        "#career-area — 9 career discipline cards with expand/collapse",
+        "#ki-staff — 3 employee testimonials",
+        "#ki-location — location grid (North America, Europe, Asia, Oceania)",
+        "#footer — country directory + copyright"
+      ],
+      "h1": "Join our global team",
+      "h2_headings": [
+        "Learn more about our education business to see where you could apply your skills",
+        "Start a new and exciting career at Kaplan",
+        "Business Areas",
+        "Career Areas",
+        "Hear from our staff",
+        "Our Locations"
+      ],
+      "strapline": "We're looking for people to make a difference",
+      "overview_copy": "International education is a vibrant sector which can offer interesting career paths to people who want a job that matters. Whether your talent is inspiring students, helping customers, building teams who can achieve great things together or finding new ways of solving old problems, we'd love to hear from you.",
+      "modals": [
+        {
+          "id": "ki-location-popup",
+          "title": "Pick your location",
+          "links": ["UK/Ireland/EMEA → HireHive", "USA/Canada → Workday", "Australia/NZ → ApplyNow", "Singapore → kaplan.com.sg", "Hong Kong → kaplan.com.hk"]
+        },
+        {
+          "id": "ki-contact-popup",
+          "title": "Contact us",
+          "address": "Recruitment team, Palace House, 3 Cathedral Street, London SE1 9DE, United Kingdom",
+          "phone": "+44 (0)20 8727 3500",
+          "email": "kaplanstaff.recruitment@kaplan.com (Cloudflare obfuscated)"
+        }
+      ],
+      "cta_buttons": [
+        "Current opportunities (triggers location picker modal)",
+        "Explore more (commented out in source)"
+      ]
+    },
+    "gender_pay_gap": {
+      "url": "https://careers.kaplaninternational.com/gender-pay-gap",
+      "note": "Route returns same HTML as homepage — client-side routing or 404 fallback. CSS contains a .gpg-report body class with full page styles suggesting it IS a real page but requires JS to render."
+    }
+  },
+
+  "business_areas": [
+    {
+      "name": "Kaplan International Languages",
+      "description": "Accredited schools offering English language courses, exam preparation, university pathways and junior programmes across 4 continents. Students from 100+ countries.",
+      "image": "dist/images/business-kaplan-int-english.jpg",
+      "link": "https://www.kaplaninternational.com"
+    },
+    {
+      "name": "Professional and Vocational",
+      "description": "Professional courses in accounting and finance in Hong Kong and Singapore. Corporate training and workforce education in Australia via Kaplan Professional Education.",
+      "image": "dist/images/business-professionals-vocational.jpg"
+    },
+    {
+      "name": "Higher Education",
+      "description": "University foundation programmes in UK, Australia (Perth/Adelaide), US, and degree programmes in Singapore, Australia and Hong Kong.",
+      "image": "dist/images/business-higher-education.jpg"
+    }
+  ],
+
+  "career_areas": [
+    "Teaching & Academic",
+    "Operations",
+    "Technology",
+    "Sales",
+    "Customer Service",
+    "Admissions",
+    "Marketing",
+    "Finance",
+    "Human Resources"
+  ],
+
+  "staff_testimonials": [
+    { "name": "William", "role": "Admissions", "image": "dist/images/ki-staff-william.jpg" },
+    { "name": "Ersilia", "role": "Customer Care", "image": "dist/images/ki-staff-ersilia.jpg" },
+    { "name": "Rachel", "role": "Teaching", "image": "dist/images/ki-staff-rachel.jpg" }
+  ],
+
+  "locations": {
+    "north_america": {
+      "usa": ["New York","Boston","Washington DC","Philadelphia","Chicago","Seattle","Miami","Portland","Berkeley","San Francisco","San Diego","Los Angeles","Huntington Beach","Golden West College"],
+      "canada": ["Toronto","Vancouver"]
+    },
+    "europe": {
+      "uk": ["London","Manchester","Cambridge","Liverpool","Torquay","Nottingham","Glasgow","Bristol","Bath","Edinburgh","Oxford","Bournemouth","Salisbury","Brighton","York"],
+      "ireland": ["Dublin"],
+      "france": ["Paris"]
+    },
+    "asia": {
+      "china": ["Beijing","Changchun","Changsha","Chengdu","Chongqing","Hangzhou","Kunming","Qingdao","Shenyang","Wuhan","Suzhou"],
+      "hong_kong": true,
+      "singapore": true,
+      "taiwan": ["Taipei"],
+      "india": ["New Delhi"],
+      "vietnam": ["Hanoi"],
+      "south_korea": true
+    },
+    "oceania": {
+      "australia": ["Sydney","Melbourne","Brisbane","Adelaide","Perth"],
+      "new_zealand": ["Auckland"]
+    }
+  },
+
+  "navigation": {
+    "primary": [
+      { "label": "Business Areas", "href": "#business-area", "type": "anchor" },
+      { "label": "Career Areas", "href": "#career-area", "type": "anchor" },
+      { "label": "Our People", "href": "#ki-staff", "type": "anchor" },
+      { "label": "Locations", "href": "#ki-location", "type": "anchor" },
+      { "label": "Current opportunities", "href": "#", "type": "modal-trigger", "modal": ".ki-location-popup", "style": "btn-skyblue" }
+    ]
+  },
+
+  "footer": {
+    "structure": "Massive country/partner directory with expandable 'View more countries' section",
+    "copyright": "© 2021 Aspect International Language Academies Ltd, Reg No: 2162156 / VAT No: 152088224 / Reg office: Palace House, 3 Cathedral Street, London SE1 9DE, United Kingdom",
+    "note": "Copyright year is 2021 — site appears unmaintained/outdated",
+    "partner_links": "Extensive list of kaptestglobal.com country-specific pages (KCEPS sub-paths)"
+  },
+
+  "external_dependencies": {
+    "analytics": [
+      { "name": "Google Tag Manager", "id": "GTM-T7R98LC", "url": "https://www.googletagmanager.com/gtm.js?id=GTM-T7R98LC" }
+    ],
+    "ab_testing": [
+      { "name": "Optimizely", "project_id": "4238035597", "url": "https://cdn.optimizely.com/js/4238035597.js" }
+    ],
+    "javascript_libraries": [
+      { "name": "jQuery", "version": "1.11.1", "url": "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" },
+      { "name": "Bootstrap", "version": "3.x", "source": "dist/js/bootstrap.min.js" },
+      { "name": "jQuery Easing", "version": "1.3", "source": "dist/js/jquery.easing.1.3.js" },
+      { "name": "HTML5 Shiv", "source": "dist/js/html5shiv.min.js", "note": "IE8 polyfill" },
+      { "name": "Respond.js", "source": "dist/js/respond.min.js", "note": "IE8 polyfill" },
+      { "name": "IE10 Viewport Bug Workaround", "source": "dist/js/ie10-viewport-bug-workaround.js" },
+      { "name": "jQuery Vide", "note": "Video background plugin", "bundled_in": "dist/js/scripts.min.js" },
+      { "name": "ScrollReveal", "note": "Scroll animation library", "bundled_in": "dist/js/scripts.min.js" },
+      { "name": "mgSpace", "note": "Custom accordion/masonry grid plugin for career items", "bundled_in": "dist/js/scripts.min.js" }
+    ],
+    "css_frameworks": [
+      { "name": "Bootstrap", "version": "3.x", "source": "dist/css/bootstrap.min.css" }
+    ],
+    "fonts": [
+      { "name": "Google Fonts — Lato", "weights": "100,300,400,700,900", "subset": "latin-ext", "url": "https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&subset=latin-ext" },
+      { "name": "KIE Icon Font", "family": "'kie'", "source": "Custom icon font bundled in dist/css/style.css", "note": "Custom icon set for KI brand icons" }
+    ],
+    "cdn_assets": [
+      { "name": "Cloudflare CDN", "note": "Main site served via Cloudflare" },
+      { "name": "Kaplan Asset Library", "url": "https://assetlibs.kaplaninternational.com/_assets/cookie-banner/js/cookieconsent.min.js", "note": "Shared cookie banner across Kaplan properties" }
+    ],
+    "cookie_management": [
+      { "name": "Kaplan Custom Cookie Consent", "url": "https://assetlibs.kaplaninternational.com/_assets/cookie-banner/js/cookieconsent.min.js", "config": "var cookieLanguage = 'en';" }
+    ],
+    "chat_widgets": "None detected",
+    "social_embeds": "None detected (social links in footer but no embeds/widgets)",
+    "favicon": "https://study.kaplaninternational.com/favicon.ico (loaded from study subdomain)"
+  },
+
+  "design_system": {
+    "typography": {
+      "primary_font": "Lato (Google Fonts)",
+      "weights_used": ["100 (thin)", "300 (light)", "400 (regular)", "700 (bold)", "900 (black)"],
+      "fallback_stack": "Lato, Helvetica, Arial, sans-serif",
+      "icon_font": "KIE (custom icon font)",
+      "font_smoothing": "-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale",
+      "text_sizes": {
+        "text-xxs": "11px",
+        "text-xs": "12px",
+        "text-sm": "13px",
+        "text-md": "14px",
+        "text-ml": "15px",
+        "text-lg": "16px",
+        "text-xl": "18px",
+        "text-xxl": "20px",
+        "text-xxxl": "24px"
+      }
+    },
+    "colour_palette": {
+      "primary_blue": "#00a5d9",
+      "dark_navy": "#232f84",
+      "deeper_navy": "#121b60",
+      "darkest_navy": "#1f223c",
+      "mid_blue": "#414980",
+      "dark_blue": "#007DB3",
+      "teal": "#0069aa",
+      "dark_teal": "#005773",
+      "bright_cyan": "#00E4FF",
+      "light_cyan": "#CBFBFF",
+      "mid_teal": "#0EA6C6",
+      "orange": "#f47b20",
+      "red": "#ed174f",
+      "dark_red": "#930b2f",
+      "lime_green": "#c1d82f",
+      "white": "#fff / #ffffff / #FFFFFF",
+      "near_black": "#02030a",
+      "dark_grey": "#2F353E / #2f353e",
+      "mid_grey_dark": "#404040",
+      "mid_grey": "#606060",
+      "body_text": "#202020",
+      "muted_grey": "#747679",
+      "light_grey": "#f0f0f0",
+      "border_grey": "#eee / #ccc / #ddd",
+      "notes": "Primary palette is sky blue (#00a5d9) + dark navy (#232f84 / #121b60). Orange (#f47b20) and red (#ed174f) used as accents. GPG report section uses a different, lighter palette."
+    },
+    "button_variants": [
+      "btn-skyblue (background: #00a5d9 — primary CTA)",
+      "btn-navy (dark navy background)",
+      "btn-white-ghost (transparent with white border)",
+      "btn-xl, btn-lg, btn-md, btn-sm (size variants)"
+    ],
+    "layout": {
+      "grid": "Bootstrap 3 (12-column)",
+      "max_container_width": "1200px (Bootstrap default)",
+      "responsive_breakpoints": {
+        "xs": "< 568px",
+        "sm": "568px",
+        "md": "768px (Bootstrap 3 md)",
+        "lg": "992px (Bootstrap 3 lg)",
+        "xl": "1200px"
+      },
+      "flex_columns": {
+        "flex-col-one": "100%",
+        "flex-col-two": "50%",
+        "flex-col-three": "33.33%",
+        "flex-col-four": "25%",
+        "flex-col-five": "20%",
+        "flex-col-six": "16.67%"
+      }
+    },
+    "sections_padding": "4% top / 5% bottom (desktop), 30px each (mobile)"
+  },
+
+  "images_used": {
+    "hero": "dist/video/ki-career.mp4 (full-screen video background via Vide.js)",
+    "logos": [
+      "dist/images/ki-logo.svg (header wordmark)",
+      "dist/images/k-logo.svg (K symbol in overview section)"
+    ],
+    "business_areas": [
+      "dist/images/business-kaplan-int-english.jpg",
+      "dist/images/business-professionals-vocational.jpg",
+      "dist/images/business-higher-education.jpg"
+    ],
+    "career_areas": [
+      "dist/images/area-teaching-academic.jpg",
+      "dist/images/area-operations.jpg",
+      "dist/images/area-technology.jpg",
+      "dist/images/area-sales.jpg",
+      "dist/images/area-customer-service.jpg",
+      "dist/images/area-admissions.jpg",
+      "dist/images/area-marketing.jpg",
+      "dist/images/area-finance.jpg",
+      "dist/images/area-human-resources.jpg"
+    ],
+    "staff": [
+      "dist/images/ki-staff-william.jpg",
+      "dist/images/ki-staff-ersilia.jpg",
+      "dist/images/ki-staff-rachel.jpg"
+    ],
+    "location_maps": [
+      "CSS background images — continent silhouettes (n-america, europe, oceania, singapore, hongkong) used in the modal"
+    ],
+    "og_image": "//careers.kaplaninternational.com/dist/images/business-kaplan-int-english.jpg"
+  },
+
+  "hirehive_job_detail_structure": {
+    "url_pattern": "https://kaplan-international.hirehive.com/{job-title-slug}-{location}-{6-char-id}",
+    "page_title_format": "{Job Title} | Kaplan International | {City}",
+    "tech_stack": "ASP.NET MVC 5.2 (.NET 4.0) + Tailwind CSS + Microsoft Application Insights",
+    "apply_form_fields": [
+      "FirstName (required)",
+      "LastName (required)",
+      "Location",
+      "CurrentCompany (required)",
+      "CurrentTitle (required)",
+      "Email (required)",
+      "Phone",
+      "CV upload",
+      "Cover letter",
+      "Right to work question (radio — required)",
+      "Custom screening questions (varies per role)"
+    ],
+    "example_jobs": [
+      {
+        "title": "Customer Service Advisor",
+        "location": "Glasgow",
+        "url": "https://kaplan-international.hirehive.com/customer-service-advisor-glasgow-3281Kk"
+      },
+      {
+        "title": "Digital Learning Product Manager",
+        "location": "London",
+        "url": "https://kaplan-international.hirehive.com/digital-learning-product-manager-london-RdFTht"
+      },
+      {
+        "title": "Academic Manager (Engineering & Computer Science)",
+        "location": "London",
+        "url": "https://kaplan-international.hirehive.com/academic-manager-engineering-computer-science-london-kQ2ZyC"
+      }
+    ],
+    "job_benefits_mentioned": [
+      "28 days annual leave",
+      "Kaplan course discounts (staff + family)",
+      "24/7 confidential helpline",
+      "Company pension",
+      "Enhanced maternity/paternity/shared parental pay",
+      "Medicash Health Cash Plan",
+      "Hybrid/home working where possible"
+    ]
+  }
+}

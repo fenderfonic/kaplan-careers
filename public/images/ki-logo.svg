@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 52" role="img" aria-label="Kaplan International">
+  <rect width="160" height="52" fill="#232f84" rx="4"/>
+  <!-- K mark -->
+  <text x="10" y="38" font-family="Helvetica Neue, Arial, sans-serif" font-weight="900" font-size="32" fill="#00a5d9">K</text>
+  <!-- Wordmark -->
+  <text x="38" y="24" font-family="Helvetica Neue, Arial, sans-serif" font-weight="700" font-size="11" fill="#ffffff" letter-spacing="0.5">KAPLAN</text>
+  <text x="38" y="40" font-family="Helvetica Neue, Arial, sans-serif" font-weight="300" font-size="9" fill="rgba(255,255,255,0.75)" letter-spacing="1">INTERNATIONAL</text>
+</svg>

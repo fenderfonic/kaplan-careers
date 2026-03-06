@@ -1,0 +1,137 @@
+---
+// src/components/sections/BusinessAreas.astro
+
+const areas = [
+  {
+    slug: 'languages',
+    title: 'Kaplan International Languages',
+    image: '/images/business-languages.jpg',
+    description:
+      '<a href="https://www.kaplaninternational.com" target="_blank" rel="noopener">Kaplan International Languages</a> operates accredited schools offering English language courses, exam preparation, university pathways and junior programmes in highly desirable study locations across 4 continents. Through the latest teaching methods, learning technology and our own unique curriculum, students from more than 100 countries achieve their study goals whilst enjoying a culturally enriching study experience.',
+  },
+  {
+    slug: 'professional',
+    title: 'Professional and Vocational',
+    image: '/images/business-professional.jpg',
+    description:
+      'Kaplan International Professional &amp; Vocational offers professional courses in accounting and finance to individuals and institutions throughout <a href="https://www.kaplanfinancial.com.hk/kf/index.php" target="_blank" rel="noopener">Hong Kong</a> and <a href="https://www.kaplan.com.sg/professional" target="_blank" rel="noopener">Singapore</a>, as well as corporate training and workforce education in Australia covering vocational areas such as customer service, finance and compliance through <a href="https://www.kaplanprofessional.edu.au/" target="_blank" rel="noopener">Kaplan Professional Education</a>.',
+  },
+  {
+    slug: 'higher-ed',
+    title: 'Higher Education',
+    image: '/images/business-higher-ed.jpg',
+    description:
+      'Kaplan International Higher Education offers university foundation programmes in the <a href="https://www.kaplanpathways.com" target="_blank" rel="noopener">UK</a>, Australia (<a href="https://www.murdochinstitute.wa.edu.au/" target="_blank" rel="noopener">Perth</a> and <a href="https://www.bradford.adelaide.edu.au/" target="_blank" rel="noopener">Adelaide</a>) and the <a href="https://www.global-pathways.com/" target="_blank" rel="noopener">US</a>, and degree programmes in <a href="https://www.kaplan.com.sg/" target="_blank" rel="noopener">Singapore</a>, <a href="https://www.kbs.edu.au/" target="_blank" rel="noopener">Australia</a> and <a href="https://www.kaplan.com.hk/" target="_blank" rel="noopener">Hong Kong</a>. Degrees span a range of career-related disciplines from accounting and business through to hospitality, IT and media.',
+  },
+];
+---
+<section id="business-area" class="section section--navy business-area" aria-labelledby="business-title">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title text-white" id="business-title">Business Areas</h2>
+      <p class="section-subtitle">
+        Kaplan International operates across 4 continents and is divided into three main business areas below
+      </p>
+    </div>
+
+    <div class="business-grid">
+      {areas.map((area, i) => (
+        <article class={`business-card reveal`} style={`animation-delay:${i * 0.12}s`}>
+          <div class="business-card__img-wrap">
+            <img
+              src={area.image}
+              alt={area.title}
+              class="business-card__img"
+              loading="lazy"
+              width="400"
+              height="280"
+            />
+            <div class="business-card__img-overlay">
+              <h3 class="business-card__img-title">{area.title}</h3>
+            </div>
+          </div>
+          <div class="business-card__body">
+            <p set:html={area.description} />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .business-area {
+    /* navy bg from section--navy */
+  }
+
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .business-card {
+    background: rgba(255,255,255,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  .business-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(2,3,10,0.3);
+  }
+
+  .business-card__img-wrap {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--color-navy-dark);
+  }
+  .business-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+  .business-card:hover .business-card__img {
+    transform: scale(1.04);
+  }
+  .business-card__img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18,27,96,0.75) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+  }
+  .business-card__img-title {
+    color: var(--color-white);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .business-card__body {
+    padding: var(--space-6);
+    flex: 1;
+  }
+  .business-card__body p {
+    color: rgba(255,255,255,0.82);
+    font-size: var(--text-md);
+    font-weight: 300;
+    line-height: var(--leading-relaxed);
+  }
+  .business-card__body a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .business-card__body a:hover {
+    color: var(--color-cyan-bright);
+  }
+</style>

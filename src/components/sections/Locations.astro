@@ -1,0 +1,141 @@
+---
+// src/components/sections/Locations.astro
+
+const continents = [
+  {
+    name: 'North America',
+    countries: [
+      {
+        name: 'United States',
+        cities: [
+          'New York','Boston','Washington DC','Philadelphia','Chicago',
+          'Seattle','Miami','Portland','Berkeley','San Francisco',
+          'San Diego','Los Angeles','Huntington Beach','Golden West College',
+        ],
+      },
+      {
+        name: 'Canada',
+        cities: ['Toronto','Vancouver'],
+      },
+    ],
+  },
+  {
+    name: 'Europe',
+    countries: [
+      {
+        name: 'United Kingdom',
+        cities: [
+          'London','Manchester','Cambridge','Liverpool','Torquay',
+          'Nottingham','Glasgow','Bristol','Bath','Edinburgh',
+          'Oxford','Bournemouth','Salisbury','Brighton','York',
+        ],
+      },
+      { name: 'Ireland',  cities: ['Dublin'] },
+      { name: 'France',   cities: ['Paris'] },
+    ],
+  },
+  {
+    name: 'Asia',
+    countries: [
+      {
+        name: 'China',
+        cities: ['Beijing','Changchun','Changsha','Chengdu','Chongqing','Hangzhou','Kunming','Qingdao','Shenyang','Wuhan','Suzhou'],
+      },
+      { name: 'Hong Kong',   cities: ['Hong Kong'] },
+      { name: 'Singapore',   cities: ['Singapore'] },
+      { name: 'Taiwan',      cities: ['Taipei'] },
+      { name: 'India',       cities: ['New Delhi'] },
+      { name: 'Vietnam',     cities: ['Hanoi'] },
+      { name: 'South Korea', cities: ['Seoul'] },
+    ],
+  },
+  {
+    name: 'Oceania',
+    countries: [
+      { name: 'Australia',   cities: ['Sydney','Melbourne','Brisbane','Adelaide','Perth'] },
+      { name: 'New Zealand', cities: ['Auckland'] },
+    ],
+  },
+];
+---
+<section id="ki-location" class="section section--navy locations" aria-labelledby="locations-title">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title" id="locations-title">Our Locations</h2>
+    </div>
+
+    <div class="locations-grid">
+      {continents.map((continent, ci) => (
+        <div class={`location-col reveal`} style={`animation-delay:${ci * 0.1}s`}>
+          <h3 class="location-col__heading">{continent.name}</h3>
+          {continent.countries.map(country => (
+            <div class="location-country">
+              <h4 class="location-country__name">{country.name}</h4>
+              <ul class="location-city-list" role="list">
+                {country.cities.map(city => (
+                  <li class="location-city">{city}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .locations {
+    /* navy bg from section--navy */
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-10);
+    margin-top: var(--space-4);
+  }
+
+  .location-col__heading {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-6);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+  }
+
+  .location-country {
+    margin-bottom: var(--space-5);
+  }
+  .location-country__name {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-2);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .location-city-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+  }
+  .location-city {
+    color: rgba(255,255,255,0.68);
+    font-size: var(--text-sm);
+    font-weight: 300;
+    white-space: nowrap;
+  }
+  .location-city::before {
+    content: '–';
+    color: var(--color-primary);
+    margin-right: var(--space-1);
+  }
+</style>
