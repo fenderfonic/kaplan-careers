@@ -104,3 +104,13 @@ Replace each placeholder with the real asset before deploying to production.
 - [ ] Download `favicon.ico` from study subdomain or request from brand team
 - [ ] Confirm GTM container ID (`GTM-T7R98LC`) is still active and correct for new domain
 - [ ] Set up `.env` / `.env.local` from `.env.example` for each deployment environment
+
+---
+
+## Unavailable live assets (HTML returned) — Phase 1
+
+Timestamp: 2026-03-06T23:07:00Z
+
+| Target path | Source URL | Notes |
+|-------------|-----------|-------|
+| `public/dist/js/scripts.min.js` | `https://careers.kaplaninternational.com/dist/js/scripts.min.js` | Server returned HTML (text/html) instead of JavaScript. File removed. |
